@@ -8,32 +8,42 @@ The set up of these functions allows for easy use once your files are orginized 
 Each file contains a detailed description of what the function or script does. Below is an overview of the functions included in this repository.
 
 ## List of functions
-mkfilepath - Helper to create a file path string corresponding to a given n, variable name, and possibly t.
 
-datopen - Opens a regular .dat file and returns two lists of numbers, one for the times, and one for the value of the variable at those times.
-datplot - Creates a timeplot of a regular .dat file.
+### Data Openers
+mkfilepath - Creates a string corresponding to the file path desired  
 
-spcopen - Opens an energy specrtum .dat file and returns two lists of numbers, one for the wave numbers, and one for the partial sum of energy of those wavenumbers.
-spcplot - Plots the energy spectrum on a log-log scale.
+datopen - Opens a regular .dat file and returns two lists of numbers, one for the times, and one for the value of the variable at those times  
+spcopen - Opens an energy specrtum .dat file and returns two lists of numbers, one for the wave numbers, and one for the partial sum of energy of those wavenumbers  
+ncfopen - Opens a .ncf file and returns a 3D array of the variable at a given time  
 
-ncfopen - Opens a .ncf file and returns a 3D array of the variable at a given time.
-ncfplot - Creates a 2D slice (pcolor) plot of a variable at a given time.
+### Plotters
+datplot - Creates a timeplot of a regular .dat file  
+spcplot - Plots the energy spectrum on a log-log scale  
+ncfplot - Creates a 2D slice (pcolor) plot of a variable at a given time  
 
-slice3d - slices a 3D array into a 2D array on a given plane at a given depth.
-fourierinterp - Uses a fourier transform method to interpolate a 2D array of values.
+slice3d - Slices a 3D array into a 2D array on a given plane at a given depth  
 
-kolwavenum - Calculates the Kolmogrorov Dissipation Wavenumber for a given energy spectrum.
+### Mathematical
+fourierinterp - Uses a fourier transform method to interpolate a 2D array of values  
+fftsmooth - Uses a Gaussien filter to smooth out a list of data
 
-getridx.m - Helper to load (or calculate if needed) indexes of 3D wavenumbers in MATLAB's fft format
-rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D array
+deriv - Uses finite differences or a Fourier method to approximate the derivative of a discrete list
 
-tofmaxval - Finds the time of the max value in a list of numbers.
+getridx - Helper to load (or calculate if needed) indexes of 3D wavenumbers in MATLAB's fft format  
+rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D array  
+
+### Physics
+kolwavenum - Calculates the Kolmogrorov Dissipation Wavenumber for a given energy spectrum  
+tofmaxval - Finds the time of the max value in a list of data  
+tofbreak  - Finds the time of wave breaking using various methods such as a threshold or max-decay condition  
+
 
 ## List of scripts
-spccomp - Uses spcplot to graph the energy spectrum for multiple n's.
-subplotmtx - Uses ncfplot to create a 'subplot matrix' of pcolor plots for multiple n's.
+spccomp - Uses spcplot to graph the energy spectrum for multiple n's at a given time   
 
-penstrophy - Calculates the partial and total potential enstrophy and plots it.
-pvorticity - Calculates the potential vorticity spectrum and dissipation wavenumbers.
-pvcomp - Mini script to take a time average of the potential vorticity spectrum.
-pvscript - Old version of penstrophy.
+subplotmtx - Uses ncfplot to create a 'subplot matrix' of pcolor plots for multiple n's
+
+penstrophy - Calculates the partial and total potential enstrophy and plots it  
+pvorticity - Calculates the potential vorticity spectrum and dissipation wavenumbers  
+pvcomp - Mini script to take a time average of the potential vorticity spectrum  
+pvscript - Old version of penstrophy
