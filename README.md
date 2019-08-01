@@ -19,9 +19,7 @@ ncfopen - Opens a .ncf file and returns a 3D array of the variable at a given ti
 ### Plotters
 datplot - Creates a timeplot of a regular .dat file  
 spcplot - Plots the energy spectrum on a log-log scale  
-ncfplot - Creates a 2D slice (pcolor) plot of a variable at a given time  
-
-slice3d - Slices a 3D array into a 2D array on a given plane at a given depth  
+ncfplot - Creates a 2D slice (pcolor) plot of a variable at a given time 
 
 ### Mathematical
 fourierinterp - Uses a fourier transform method to interpolate a 2D array of values  
@@ -30,7 +28,9 @@ fftsmooth - Uses a Gaussien filter to smooth out a list of data
 deriv - Uses finite differences or a Fourier method to approximate the derivative of a discrete list
 
 getridx - Helper to load (or calculate if needed) indexes of 3D wavenumbers in MATLAB's fft format  
-rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D array  
+rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D array   
+
+slice3d - Slices a 3D array into a 2D array on a given plane at a given depth  
 
 ### Physics
 kolwavenum - Calculates the Kolmogrorov Dissipation Wavenumber for a given energy spectrum  
@@ -46,4 +46,10 @@ subplotmtx - Uses ncfplot to create a 'subplot matrix' of pcolor plots for multi
 penstrophy - Calculates the partial and total potential enstrophy and plots it  
 pvorticity - Calculates the potential vorticity spectrum and dissipation wavenumbers  
 pvcomp - Mini script to take a time average of the potential vorticity spectrum  
-pvscript - Old version of penstrophy
+pvscript - Old version of penstrophy  
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
