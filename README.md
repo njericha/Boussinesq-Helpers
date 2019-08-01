@@ -47,9 +47,3 @@ penstrophy - Calculates the partial and total potential enstrophy and plots it
 pvorticity - Calculates the potential vorticity spectrum and dissipation wavenumbers  
 pvcomp - Mini script to take a time average of the potential vorticity spectrum  
 pvscript - Old version of penstrophy  
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
