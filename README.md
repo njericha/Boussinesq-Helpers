@@ -43,6 +43,8 @@ spccomp - Uses spcplot to graph the energy spectrum for multiple n's at a given 
 
 subplotmtx - Uses ncfplot to create a 'subplot matrix' of pcolor plots for multiple n's
 
+etotscript - Uses datplot to plot the total energy (or epsilon) for multiple runs and uses tofbreak/tofmaxval to find the corresponding times of break or max vorticity
+
 penstrophy - Calculates the partial and total potential enstrophy and plots it  
 pvorticity - Calculates the potential vorticity spectrum and dissipation wavenumbers  
 pvcomp - Mini script to take a time average of the potential vorticity spectrum  
