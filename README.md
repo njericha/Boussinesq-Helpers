@@ -52,7 +52,7 @@ rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D arra
 
 ### *Potential Vorticity and Enstrophy*
 **pvspc** - Calculates the potential vorticity and its spectrum along with the dissipation wavenumbers and loglog plots them  
-**pvcomp** - Plots the potential vorticity spectrum for a given n at multiple times
+**pvcomp** - Plots the potential vorticity spectrum for a given n at multiple times  
 **pvtavg** - Like pvcomp but takes a time average of the different graphs rather than ploting them separately  
 **pvscript** - Old version of penstrophy  
 **penstrophy** - Calculates the partial and total potential enstrophy and plots it  
