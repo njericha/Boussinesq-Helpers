@@ -23,17 +23,14 @@ Each file contains a detailed description of what the function or script does. B
 **ncfplot** - Creates a 2D slice (pcolor) plot of a variable at a given time 
 
 ### *Mathematical*
+**deriv** - Uses finite differences or a Fourier method to approximate the derivative of a discrete list  
 **fourierinterp** - Uses a fourier transform method to interpolate a 2D array of values  
 **fftsmooth** - Uses a Gaussien filter to smooth out a list of data
 
-**deriv** - Uses finite differences or a Fourier method to approximate the derivative of a discrete list
-
-**getridx** - Helper to load (or calculate if needed) indexes of 3D wavenumbers in MATLAB's fft format  
-rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D array   
-
+**getridx** - Helper to load or calculate indexes of 3D wavenumbers in MATLAB's fft format  
+**rsum** - Uses getridx to sphericaly sum over a constant radius values in a 3D array   
 **slice3d** - Slices a 3D array into a 2D array on a given plane at a given depth  
-
-**showmtx** - Takes a 2D spectral matrix and graphs the zero values as gray and non-zero values as green and find the width of the non-zero part
+**showmtx** - Takes a 2D spectral matrix and graphs the zero values as gray and non-zero values as green and find the width of the non-zero part  
 
 ### *Physics*
 **kolwavenum** - Calculates the Kolmogrorov Dissipation Wavenumber for a given energy spectrum  
