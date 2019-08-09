@@ -9,6 +9,15 @@ function filepath = mkfilepath(n,var,t,N)
     datvars  = {'eng','eps','epsij','spc','spch','spcz','trn','trnh','trnz'};
     ncfvars  = {'TH','U','V','W','ZX','ZY','ZZ'};
     morecode = '/home/njericha/morecode/';
+    Nnot1 = exist('N','var') && N ~= 1;
+	tbig = 5;
+    
+    if Nnot1
+        if N==2 && n==1024, tbig=10;end
+        if N==4, tbig=10;end
+        if N==6, tbig=20;end
+        if N==16,tbig=40;end
+    end
     
     if ismember(var,datvars)
         fname = var;
@@ -21,7 +30,6 @@ function filepath = mkfilepath(n,var,t,N)
         
         % .ncf files were not exported at every time. Find the file closest
         % to the desired time.
-        tbig = 5;
         bigtime = t/tbig;
         if rem(bigtime,1)~=0
             disp(['Note: ' var ' at time ' int2str(round(bigtime)*tbig) ...
@@ -45,7 +53,7 @@ function filepath = mkfilepath(n,var,t,N)
     end
     
     % check if N is given and is different than 1 
-    if exist('N','var') && N ~= 1
+    if Nnot1
         Nstr  = ['N' num2str(N)];
         extra = morecode;
     else      

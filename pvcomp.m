@@ -1,23 +1,33 @@
-% Takes a time average of the PV spectrum for a given n and loglog plots
-% it. It requires all the desired times to have been pre-calculated.
+% Plot multiple PV spectrums for a given n at multiple times.
+% It requires all the desired times to have been pre-calculated.
 
 % Inputs
-ts = 230:5:240;
-n = 512;
+n = 256;
+ts = 200:10:240;
 
-% Initialize total sum of PVk
-total = zeros(1,171);
+% Create figure
+f = figure;
+set(f,'Position',[800, 100, 800, 800])
+
+% List of line styles to cycle through
+linestyles = {'-',':','--','-.'};
 
 % main loop
-for t = ts
-filename = ['results/toexport/PVn' int2str(n) '_t' int2str(t)];
-S = load([filename '.mat'],'PVk');
-total = total + S.PVk;
+for idx = 1:length(ts)
+    t = ts(idx);
+    %Load file data
+    filename = ['results/toexport/PVn' int2str(n) '_t' int2str(t)];
+    S = load([filename '.mat'],'kr','PVk');
+    
+    %Loglog plot it
+    colorfade = [1 1 1] - ([1 1 0].*(idx / length(ts))).^1.5; %fades from white to blue
+    h = loglog(S.kr,S.PVk,'DisplayName',['t = ' num2str(t)],...
+        'Color', colorfade,'LineStyle',linestyles{mod(idx-1,4)+1});           
+    hold on
 end
+hold off
 
-% Find average
-nts = length(ts);
-PVkAVG = total/nts;
-
-% Loglog plot the average
-h=loglog(kr,PVkAVG);
+% Title, legend, axis labels
+title(['Potential Vorticity Spectrum for n = ' int2str(n) ' at Various Times'])
+leg = legend;leg.Location = 'northwest';
+xlabel('Wavenumber Magnitude');ylabel('Potential Vorticity Partial Sum');

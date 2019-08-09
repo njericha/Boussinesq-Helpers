@@ -18,10 +18,25 @@ function h = ncfplot(var,t,n,xyaxis,zslice,varargin)
 %                       than the physical space
 % ncfplot(__,'export','filename.png') will export the plot to filename.png
     
-    % Optional arguments parsing
-    interp  = ismember('interp' ,varargin);
-    fourier = ismember('fourier',varargin);
-    export  = ismember('export' ,varargin);
+    % Optional arguments parsing    
+    interp  = 0;
+    fourier = 0;
+    export  = 0;
+    Nexist  = 0;
+    idxs = find(cellfun(@ischar,varargin));    
+    for idx = idxs
+        interp  = interp  || strcmp(varargin{idx},'interp');
+        fourier = fourier || strcmp(varargin{idx},'fourier');
+        export  = export  || strcmp(varargin{idx},'export');
+        Nexist  = Nexist  || strcmp(varargin{idx},'N');
+    end
+    
+    % defines N if it is given, otherwise it is 1
+    if Nexist
+        N = varargin{cellfun(@isnumeric,varargin)};
+    else
+        N = 1;
+    end
     
     % Find the filename and set up a new figure if exporting is desired
     if export
@@ -32,7 +47,7 @@ function h = ncfplot(var,t,n,xyaxis,zslice,varargin)
     end
     
     % Open data as a 3D array
-    data = ncfopen(var,t,n);
+    data = ncfopen(var,t,n,N);
     
     % Create a slice of the 3D array
     plane = slice3d(data,xyaxis,zslice);

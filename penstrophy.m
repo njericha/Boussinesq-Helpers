@@ -2,10 +2,12 @@
 % the set of temperature and vorticity values created by boussinesq.F90
 
 % Inputs
-n = 1024; %gridsize
+n = 256; %gridsize
 N = 1; % Brunt-Vaisala Frequency
 beta = N^2;
 bigtime = 5; %big time step, spacing of .ncf saved files
+recalculate = 0; % 1 -> force PE to be recalculated
+                 % 0 -> only calculate if PE data is not found
 
 U = 0.4;  % characteristic velocity scale
 L = 2*pi; % characteristic length scale
@@ -13,10 +15,7 @@ PV0 = U*beta/L; % find nondimentionalizing constant
 
 % Auto set tmax based on N
 if N==2, tmax = 500; elseif N==1.5, tmax = 400; elseif N==0.5, tmax = 265; else, tmax = 300; end
-tmax=260;
-ts = 90:bigtime:tmax;
-
-%if n==1024,tmax=255; end %temp condition while 1024 is still running
+ts = 0:bigtime:tmax;
 
 % Create filename, N only needs to be stated when it is different than 1.
 if N==1
@@ -24,13 +23,15 @@ if N==1
 else
     fnameN = ['N' num2str(N)];
 end
-filename = ['results/toexport/PEn' int2str(n) fnameN];
+filename = ['results/toexport/PEn' int2str(n) fnameN]; %change file path as needed
 
-% Load PV data if it exists, if not then compute it
-if exist([filename '.mat'],'file')
+try % Load PV data if it exists, if not then compute it
+    if recalculate, error('calculate new PEn'); end
     S = load([filename '.mat'],'PEs','ts','tmaxPE','V2','V3','V4');
     PEs=S.PEs; ts=S.ts; tmaxPE=S.tmaxPE; V2=S.V2; V3=S.V3; V4=S.V4;
-else
+catch
+    warning(['Calculating PEn' int2str(n) fnameN])
+    
     % Wave numbers
     k = [0:(n/2),(-(n/2)+1):-1];
     [KZ,KX,KY] = meshgrid(k,k,k);
@@ -67,6 +68,7 @@ else
         % potential vorticity parts
         PI1 = beta*zz;
         PI2 = zx.*thx + zy.*thy + zz.*thz;
+        PV  = PI1 + PI2;
 
         % Quadratic, cubic, and quartic potential enstrophy contributions
         idx = t/bigtime + 1;

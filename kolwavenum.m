@@ -15,7 +15,15 @@ function [kdis, varargout] = kolwavenum(n,t,wavetype,N)
 % the boyency frequency, and epsilon which is calculated. If N is not
 % supplied, N=1 is assumed.
 
-
+    % Defult wavetype and N
+    if ~exist('wavetype','var')
+        wavetype='';
+    end
+    
+    if ~exist('N','var')
+        N=1;
+    end
+    
     % Automaticly sets initial condition based on the simulations ran in
     % the 2019 summer research term for convinence.
     if n <= 128
@@ -36,11 +44,7 @@ function [kdis, varargout] = kolwavenum(n,t,wavetype,N)
     root = 1/(6*ilap-2); %root that must be taken to ensure the right units
     
     % Open spectrum
-    if exist('wavetype','var')
-        [ks,Ek] = spcopen(n,t,wavetype);
-    else
-        [ks,Ek] = spcopen(n,t);
-    end
+    [ks,Ek] = spcopen(n,t,wavetype,N);
     
     % Calculate Kenetic Energy dissipation rate
     eps = 2*mu*sum(ks.^(2*ilap).*Ek);
@@ -52,9 +56,6 @@ function [kdis, varargout] = kolwavenum(n,t,wavetype,N)
     if nargout == 1
         return
     elseif nargout == 2
-        if ~exist('N','var')
-            N=1;
-        end
         % Calculate Other Dissipation Waver Number
         odis = (N^3/eps)^0.5;
         varargout{1} = odis;

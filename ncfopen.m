@@ -1,4 +1,4 @@
-function data = ncfopen(var,t,n)
+function data = ncfopen(var,t,n,N)
 % data = ncfopen(var,t,n)
 %
 % Takes a variable name, a time, and a grid size, and extracts the data
@@ -14,7 +14,11 @@ function data = ncfopen(var,t,n)
 % *time must be less than 210 when n=480 since that run timed out
     
     % Make the file name
-    fn = mkfilepath(n,var,t);
+    if exist('N','var')
+        fn = mkfilepath(n,var,t,N);
+    else
+        fn = mkfilepath(n,var,t);
+    end    
     
     % Open file as a 3D array
     data = ncread(fn,var);

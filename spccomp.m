@@ -5,8 +5,8 @@
 
 % Inputs
 %ns = [160 180 192 200 240 256];
-ns = [320 360 384         512];
-t  = 238; %Must be between 0 and 300, can be given to one decimal place
+ns = [256 512 1024];%[320 360 384         512];
+t  = 220; %Must be between 0 and 300, can be given to one decimal place
 wavetype = 's'; %'s' = spherical, 'h' = cylindrical, 'z' = rectangular
 ylimits = [1e-10 1e-2];
 
