@@ -9,7 +9,7 @@ Each file contains a detailed description of what the function or script does. B
 
 ## List of functions
 
-### Data Openers
+### *Data Openers*
 
 **mkfilepath** - Creates a string corresponding to the file path desired  
 
@@ -17,12 +17,12 @@ Each file contains a detailed description of what the function or script does. B
 **spcopen** - Opens an energy specrtum .dat file and returns two lists of numbers, one for the wave numbers, and one for the partial sum of energy of those wavenumbers  
 **ncfopen** - Opens a .ncf file and returns a 3D array of the variable at a given time  
 
-### Plotters
+### *Plotters*
 **datplot** - Creates a timeplot of a regular .dat file  
 **spcplot** - Plots the energy spectrum on a log-log scale  
 **ncfplot** - Creates a 2D slice (pcolor) plot of a variable at a given time 
 
-### Mathematical
+### *Mathematical*
 **fourierinterp** - Uses a fourier transform method to interpolate a 2D array of values  
 **fftsmooth** - Uses a Gaussien filter to smooth out a list of data
 
@@ -35,24 +35,28 @@ rsum - Uses getridx to sphericaly sum over a constant radius values in a 3D arra
 
 **showmtx** - Takes a 2D spectral matrix and graphs the zero values as gray and non-zero values as green and find the width of the non-zero part
 
-### Physics
+### *Physics*
 **kolwavenum** - Calculates the Kolmogrorov Dissipation Wavenumber for a given energy spectrum  
 **tofmaxval** - Finds the time of the max value in a list of data  
 **tofbreak**  - Finds the time of wave breaking using various methods such as a threshold or max-decay condition  
 
 
 ## List of scripts
+
+### *Comparisons*
 **datcomp** - Uses datplot to plot a variable for multiple runs and uses tofbreak/tofmaxval to find the corresponding times of break or max vorticity  
 **spccomp** - Uses spcplot to plot the energy spectrum for multiple n's at a given time   
 **ncfcomp** - Uses ncfplot to plot a 2D slice of a variable for multiple n's  
 
 **subplotmtx** - Uses ncfplot to create a 'subplot matrix' of pcolor plots for multiple n's  
 
-**penstrophy** - Calculates the partial and total potential enstrophy and plots it  
-**pexcorr** - Plots the cross-correlation of the potential enstrophy with another time data variable along with normilized graphs of the PE and the variable  
+### *Potential Vorticity and Enstrophy*
 **pvspc** - Calculates the potential vorticity and its spectrum along with the dissipation wavenumbers and loglog plots them  
 **pvcomp** - Plots the potential vorticity spectrum for a given n at multiple times
 **pvtavg** - Like pvcomp but takes a time average of the different graphs rather than ploting them separately  
-pvscript - Old version of penstrophy  
+**pvscript** - Old version of penstrophy  
+**penstrophy** - Calculates the partial and total potential enstrophy and plots it  
+**pexcorr** - Plots the cross-correlation of the potential enstrophy with another time data variable along with normilized graphs of the PE and the variable  
 
+### *Other*
 **mktable** - Test idea to create a table of data that all these functions/scripts could reference and have consistent default settings  
